@@ -43,7 +43,7 @@ def statit(stat, value, type="gauge"):
         gauge.inc(float(value))
 
 def process_tick(msg):
-    currency = msg['product_id'].replace('-USD', '')
+    currency = msg['product_id'].replace('-', '_')
     metric_base = 'gdax_' + currency.lower() + '_'
     if msg['type'] == 'received':
         stat_received(msg, metric_base)
